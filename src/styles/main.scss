@@ -1,0 +1,375 @@
+@import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=League+Spartan:wght@400;700&family=Quicksand:wght@400;700&display=swap");
+
+$color-primary: #e54b4b;
+$color-primary-hover: #b13939;
+$color-secondary: #f7ebe8;
+$color-secondary-hover: #dbd1ce;
+$color-black: #000;
+// font-size
+$fs-header: 24px;
+$fs-nav: 18px;
+$fs-hero: 36px;
+$fs-section: 30px;
+$fs-body: 16px;
+
+// font-family
+$ff-logo: "Berkshire Swash", sans-serif;
+$ff-primary: "League Spartan", sans-serif;
+$ff-secondary: "Quicksand", sans-serif;
+
+@mixin boldUpperCase {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+@mixin subHeader {
+  @include boldUpperCase();
+  letter-spacing: 0.1em;
+  color: $color-black;
+}
+
+@mixin sectionHeader {
+  @include boldUpperCase();
+  font-size: $fs-section;
+  line-height: 28px;
+}
+
+@mixin flexCenter() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $color-secondary;
+  font-family: $ff-secondary;
+  padding: 24px;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  ul {
+    list-style-type: none;
+    @include flexCenter();
+    justify-content: space-evenly;
+    font-size: $fs-nav;
+    li {
+      min-width: 100px;
+      text-align: center;
+      padding: 8px;
+      &:hover {
+        cursor: pointer;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.nav {
+  &__logo {
+    color: $color-primary;
+    font-family: $ff-logo;
+    font-size: $fs-header;
+    text-align: center;
+  }
+
+  &__active {
+    border-bottom: 10px solid $color-primary;
+  }
+}
+
+.hero {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 80vh;
+  justify-content: center;
+  &__text {
+    &--main {
+      @include sectionHeader();
+      color: $color-primary;
+      font-weight: 700;
+      font-family: $ff-primary;
+      text-transform: capitalize;
+      font-size: $fs-hero;
+      line-height: 34px;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__button {
+    appearance: none;
+    outline: none;
+    width: 45%;
+    height: 45px;
+    border-radius: 20px;
+    background-color: $color-secondary;
+    color: $color-primary;
+    @include boldUpperCase();
+    font-family: $ff-primary;
+    font-size: $fs-body;
+    border: 1px solid $color-primary;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $color-secondary-hover;
+    }
+
+    &--container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1rem;
+    }
+
+    &--full {
+      width: 100%;
+    }
+    &--primary {
+      color: $color-secondary;
+      background: $color-primary;
+
+      &:hover {
+        background-color: $color-primary-hover;
+      }
+    }
+  }
+}
+
+.menu,
+.contact {
+  padding: 2rem 2rem;
+  @include flexCenter();
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 1.5em;
+
+  &__form {
+    // Change height
+    height: fit-content;
+    width: 100%;
+    background-color: $color-primary;
+    border-radius: 20px;
+    padding: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    &--details {
+      display: flex;
+      flex-direction: column;
+      gap: 2em;
+    }
+    &--container {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+    &--row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    &--input {
+      appearance: none;
+      outline: none;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 1rem;
+      font-family: $ff-secondary;
+      background-color: $color-secondary;
+      &--add {
+        height: 125px;
+        resize: none;
+      }
+      &--map {
+        margin-top: 1rem;
+        border: none;
+        width: 100%;
+        border-radius: 20px;
+      }
+    }
+  }
+  &__item {
+    width: 100%;
+    min-height: 380px;
+    height: fit-content;
+    padding-bottom: 1.25em;
+    background-color: $color-primary;
+    border-radius: 20px;
+
+    &--group {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5em;
+    }
+  }
+
+  &__image {
+    object-fit: cover;
+    width: 100%;
+    height: 185px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+  }
+
+  &__header {
+    @include boldUpperCase();
+    font-family: $ff-primary;
+    font-size: $fs-section;
+    color: $color-primary;
+    max-width: 100%;
+
+    &--group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    &--form {
+      color: $color-secondary;
+    }
+  }
+
+  &__text {
+    color: $color-secondary;
+    &--header {
+      @include boldUpperCase();
+      font-family: $ff-primary;
+      font-size: $fs-section;
+      align-self: flex-start;
+    }
+
+    &--subheader {
+      @include subHeader();
+    }
+
+    &--group {
+      @include flexCenter();
+      flex-direction: column;
+      padding: 1rem 2rem;
+    }
+
+    &--form {
+      text-transform: uppercase;
+    }
+  }
+
+  &__button {
+    &--group {
+      @include flexCenter();
+      justify-content: space-between;
+      padding: 0 2rem;
+    }
+  }
+}
+
+#tabContainer {
+  width: 90vw;
+}
+@media screen and (min-width: 750px) {
+  $fs-hero: 56px;
+  $fs-header: 36px;
+  nav {
+    width: 600px;
+    margin: 0 auto;
+  }
+  .nav {
+    &__logo {
+      font-size: $fs-header;
+    }
+  }
+  #tabContainer {
+    width: 500px;
+    margin: 0 auto;
+  }
+  .hero {
+    // flex-direction: row;
+    height: auto;
+    align-items: center;
+    &__text {
+      &--main {
+        font-size: $fs-hero;
+        line-height: 100%;
+        margin-top: 1em;
+      }
+    }
+
+    &__image {
+      width: 600px;
+    }
+
+    &__button {
+      font-size: 20px;
+    }
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  $fs-section: 44px;
+  #tabContainer {
+    width: 1000px;
+    margin: 0 auto;
+  }
+  .hero {
+    &__text {
+      &--content {
+        width: 60%;
+      }
+    }
+  }
+
+  .menu,
+  .contact {
+    &--container {
+      flex-direction: row;
+    }
+    &__header {
+      font-size: $fs-section;
+    }
+    &__item {
+      height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-bottom: 2rem;
+
+      &--group {
+        flex-direction: row;
+      }
+    }
+
+    &__text {
+      &--group {
+        width: 100%;
+        min-height: 88px;
+      }
+    }
+    &__button {
+      &--group {
+        width: 100%;
+      }
+    }
+    &__form {
+      flex-direction: row;
+      &--details {
+        display: flex;
+        flex-direction: column;
+        gap: 4em;
+      }
+      &--container {
+        width: 50%;
+      }
+    }
+  }
+}
